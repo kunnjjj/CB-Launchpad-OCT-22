@@ -68,11 +68,63 @@ int kadane_n_space(int *A,int n)
 
     return best_sum;
 }
-// int kadane_contant_space(int *A,int n)
-// {
+int kadane_contant_space(int *A,int n)
+{
 
-// }
+    int best_sum=INT_MIN;
+    int oldBest=0;
+    for(int i=0;i<n;i++)
+    {
+        int newBest=max(
+            oldBest + A[i], // continue in old subarray
+             A[i] // start a new subarray
+        );
 
+        if(newBest > best_sum)
+        {
+            best_sum=newBest;
+        }
+        oldBest=newBest;
+    }
+    return best_sum;
+}
+int joSolutionOnlineMilega(int *A,int n)
+{
+    int best_sum=INT_MIN;
+    int oldBest=0;
+    for(int i=0;i<n;i++)
+    {
+        int newBest=oldBest+A[i];
+
+        if(newBest > best_sum)
+        {
+            best_sum=newBest;
+        }
+        if(oldBest < 0 ) oldBest=0;
+    }
+    return best_sum;
+}
+int alternate(int *A,int n)
+{
+    int best_sum=INT_MIN;
+    int cur=0;
+    // for(int i=0;i<n;i++)
+    // {
+    //     cur = cur + A[i];
+    //     if(cur > best_sum)
+    //     {
+    //         best_sum=cur;
+    //     }
+    //     if(cur < 0) cur=0;
+    // }
+    // return best_sum;
+    for(int i=0;i<n;i++)
+    {
+        cur=max(cur + A[i],A[i]);
+        best_sum=max(best_sum,cur);
+    }
+    return best_sum;
+}
 int main()
 {
     int n;
