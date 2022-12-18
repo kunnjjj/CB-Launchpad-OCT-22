@@ -100,6 +100,7 @@ int joSolutionOnlineMilega(int *A,int n)
         {
             best_sum=newBest;
         }
+        oldBest=newBest;
         if(oldBest < 0 ) oldBest=0;
     }
     return best_sum;
