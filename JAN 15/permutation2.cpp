@@ -3,7 +3,6 @@ using namespace std;
 
 void generatePermutations(string &s,int i,int &cnt)
 {
-
     if(i==(int)s.size())
     {
         cout<<s<<endl;
@@ -11,11 +10,12 @@ void generatePermutations(string &s,int i,int &cnt)
         return ;
     }
 
-
     for(int j=i;j<(int)s.size();j++)
     {
         swap(s[i],s[j]);
         generatePermutations(s,i+1,cnt);
+        swap(s[j],s[i]);  // BACKTRACKING
+
     }
 }
 
