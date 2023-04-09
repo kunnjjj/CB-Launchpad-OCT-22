@@ -1,8 +1,8 @@
 #include<iostream>
 using namespace std;
+  
 
-
-class Queue
+class  Queue
 {
     int *A;
     int cur_size,maxSize;
